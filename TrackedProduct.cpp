@@ -28,3 +28,8 @@ void TrackedProduct::show()
 	std::cout<<"TODO";
 	return;
 }
+void TrackedProduct::changeAmount(int amount)
+{
+	std::cout<<"TODO";
+	return;
+}

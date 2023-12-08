@@ -16,6 +16,7 @@
 #define cout std::cout
 #define cin std::cin
 #define endl std::endl
+
 int main()
 {
 	//Core objects. Everything that nees to interact with anything goes through them. 
@@ -23,19 +24,19 @@ int main()
 	ReportList reportArchive;
 	EmployeeList listOfWorkers;
 	TrackedProdList listOfProducts;
-	Report currentReport;
-	ShiftHandoverLog currentLog; 
+	Report* currentReport;
+	ShiftHandoverLog* currentLog; 
 	User* activeUser; 
 	
 	//User input string.
-	std::string input="owo";
+	int input=-1;
 	
 	//User must create the first admin. 
 	listOfWorkers.addEmployee(manager);
 	
 	
 	
-	while(input!="0")
+	while(input!=0)
 	{
 		system("cls");
 		cout<<"Choose, what you want to do: "<<endl;
@@ -57,9 +58,192 @@ int main()
 		cout<<"15. See the archived reports."<<endl;
 		cout<<"16. See the archived handover logs."<<endl;
 		cout<<"17. Close the shift."<<endl;
-		cout<<activeUser->GetName()<<">";
+		if(activeUser!=0) cout<<"noUser"<<">";
+		else cout<<activeUser->GetName()<<">";
+		
 		cin>>input;
-		//TODO process user input
+		
+		switch(input)
+		{
+			case 1:
+			{
+				listOfWorkers.login();
+				break;
+			}
+			case 2:
+			{
+				activeUser=0;
+				break;
+			}
+			case 3:
+			{
+				if(activeUser==0) break;
+				if(!activeUser->CheckAccess(manager)) break;
+				
+				std::string locInput="y";
+				while(locInput=="y")
+				{
+					listOfWorkers.addToShift(listOfWorkers.chooseEmployee());
+					cout<<endl<<"If you wish to add another user? y/n"<<endl;
+					cout<<">";
+					cin>>locInput;
+				}
+				break;
+			}
+			case 4:
+			{
+				if(activeUser==0) break;
+				if(!activeUser->CheckAccess(baker)) break;
+				
+				currentReport->AttachInvoice(activeUser, &listOfProducts);
+				break;
+			}
+			case 5:
+			{
+				if(activeUser==0) break;
+				if(!activeUser->CheckAccess(baker)) break;
+				
+				listOfProducts.showProducts();
+				break;
+			}
+			case 6:
+			{
+				if(activeUser==0) break;
+				if(!activeUser->CheckAccess(barman)) break;
+				
+				
+				int am;
+				cout<<endl<<"Please enter the amount sold: ";
+				cin>>am;
+				listOfProducts.chooseProduct()->changeAmount(am);
+				break;
+			}
+			case 7:
+			{
+				if(activeUser==0) break;
+				if(!activeUser->CheckAccess(barman)) break;
+				
+				
+				currentLog->OpenAlcohol();
+				break;
+			}
+			case 8:
+			{
+				if(activeUser==0) break;
+				if(!activeUser->CheckAccess(manager)) break;
+				
+				listOfProducts.addProduct();
+				break;
+			}
+			case 9:
+			{
+				if(activeUser==0) break;
+				if(!activeUser->CheckAccess(manager)) break;
+				
+				listOfProducts.removeProduct();
+				break;
+			}
+			case 10:
+			{
+				if(activeUser==0) break;
+				if(!activeUser->CheckAccess(manager)) break;
+				
+				int type;
+				cout<<endl<<"Please specify: "<<endl;
+				cout<<"1. Add manager"<<endl;
+				cout<<"2. Add barman"<<endl;
+				cout<<"3. Add baker"<<endl;
+				cout<<">";
+				cin>>type;
+				
+				switch(type)
+				{
+					case 1:
+					{
+						listOfWorkers.addEmployee(manager); break;
+					}
+					case 2:
+					{
+						listOfWorkers.addEmployee(barman); break;
+					}
+					case 3:
+					{
+						listOfWorkers.addEmployee(baker); break;
+					}
+				}	
+				break;
+			}
+			case 11:
+			{
+				if(activeUser==0) break;
+				if(!activeUser->CheckAccess(manager)) break;
+				
+				listOfWorkers.removeEmployee();
+				break;
+			}
+			case 12:
+			{
+				if(activeUser==0) break;
+				if(!activeUser->CheckAccess(manager)) break;
+				
+				listOfWorkers.showEmployees();
+				break;
+			}
+			case 13:
+			{
+				if(activeUser==0) break;
+				if(!activeUser->CheckAccess(manager)) break;
+				
+				currentReport->SeeInvoiceList();
+				break;
+			}
+			case 14:
+			{
+				if(activeUser==0) break;
+				if(!activeUser->CheckAccess(manager)) break;
+				
+				currentLog->ShowAlcoholList();
+				break;
+			}
+			case 15:
+			{
+				if(activeUser==0) break;
+				if(!activeUser->CheckAccess(manager)) break;
+				
+				reportArchive.ShowReports();
+				break;
+			}
+			case 16:
+			{
+				if(activeUser==0) break;
+				if(!activeUser->CheckAccess(manager)) break;
+				
+				logArchive.showLogs();
+				break;
+			}
+			case 17:
+			{
+				if(activeUser==0) break;
+				if(!activeUser->CheckAccess(manager)) break;
+				
+				std::string locInput="owo";
+				cout<<endl<<"Do you need to fill the report? y/n"<<endl;
+				cout<<">";
+				cin>>locInput;
+				
+				if(locInput=="y")
+				{
+					currentReport->FillReport();
+					reportArchive.addReport(currentReport);
+				}			
+				
+				currentLog->FillLog(activeUser, &listOfProducts);
+				logArchive.addLog(currentLog);
+				listOfWorkers.clearShift();
+				break;
+			}
+		}
+		
 	}
 	
 	

@@ -15,5 +15,6 @@ class TrackedProduct : public Product {
 		bool isEdited();
 		void clearTracking();
 		void show();
+		void changeAmount(int amount);
 };
 #endif 

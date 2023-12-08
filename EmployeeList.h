@@ -16,5 +16,6 @@ class EmployeeList {
 		void addToShift(User* targUser);
 		void clearShift();
 		bool isOnShift(User* targUser);
+		void login();
 };
 #endif
