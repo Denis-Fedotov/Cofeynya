@@ -8,7 +8,7 @@ class Product {
 		std::string name;
 		int quantity;
 	public:
-		void Product(std::string name);
+		Product(std::string name);
 		void changeAmount(int amount);
 		void show();
 };
