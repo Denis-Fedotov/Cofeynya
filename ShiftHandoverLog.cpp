@@ -11,6 +11,7 @@ void ShiftHandoverLog::ShowAlcoholList()
 {
 	for(int i=0; i<listOfAlcohol.size(); i++)
 	{
+		std::cout<<i<<". ";
 		listOfAlcohol[i]->show();
 	}
 	return;
@@ -39,7 +40,7 @@ void ShiftHandoverLog::showProductList()
 {
 	for(int i=0; i<ListOfProduct.size(); i++)
 	{
-		std::cout<<"1. ";
+		std::cout<<i<<". ";
 		ListOfProduct[i]->show();
 	}
 	return;
