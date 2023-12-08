@@ -10,7 +10,6 @@ class LogList {
 		std::vector<ShiftHandoverLog*> listOfLogs;
 	public:
 		void showLogs();
-		ShiftHandoverLog* chooseLog();
 		void addLog(ShiftHandoverLog* targLog);
 };
 #endif 
