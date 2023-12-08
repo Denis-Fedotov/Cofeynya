@@ -1,14 +1,20 @@
 #include <iostream>
 #include <string>
+#include "Product.h"
 #include "TrackedProduct.h"
 
 
+TrackedProduct::TrackedProduct(std::string prodName) : Product(prodName)
+{
+	std::cout<<"TODO";
+	return;
+}
 void TrackedProduct::snap()
 {
 	std::cout<<"TODO";
 	return;
 }
-int TrackedProduct::getName()
+std::string TrackedProduct::getName()
 {
 	std::cout<<"TODO";
 	return 0;

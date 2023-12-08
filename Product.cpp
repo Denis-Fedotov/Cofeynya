@@ -3,7 +3,7 @@
 #include "Product.h"
 
 
-Product::Product(std::string name)
+Product::Product(std::string prodName)
 {
 	std::cout<<"TODO";
 	return;
