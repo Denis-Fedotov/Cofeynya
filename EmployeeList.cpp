@@ -39,3 +39,8 @@ bool EmployeeList::isOnShift(User* targUser)
 	std::cout<<"TODO";
 	return false;
 }
+void EmployeeList::login()
+{
+	std::cout<<"TODO";
+	return;
+}
