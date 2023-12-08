@@ -10,8 +10,9 @@ class TrackedProduct : public Product {
 		int consumed;
 		bool edited;
 	public:
+		TrackedProduct(std::string prodName);
 		void snap();
-		int getName();
+		std::string getName();
 		bool isEdited();
 		void clearTracking();
 		void show();
