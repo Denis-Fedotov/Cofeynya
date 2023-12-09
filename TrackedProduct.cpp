@@ -35,8 +35,8 @@ void TrackedProduct::clearTracking()
 }
 void TrackedProduct::show()
 {
-	std::cout<<"Name: "<<name<<"/n"<<"Quantity: "<<quantity<<"/n"<<"First quantity of the day: "<< firstQuantity<<"/n";
-	std::cout<<"Added today: "<< added<<"/n"<<"Consumed today: "<< consumed<<"/n"<<"Edited: ";
+	std::cout<<"Name: "<<name<<" Quantity: "<<quantity<<" First quantity of the day: "<< firstQuantity;
+	std::cout<<" Added today: "<< added<<" Consumed today: "<< consumed<<" Edited: ";
 	if (edited)
 		std::cout<< "y";
 	else
@@ -45,6 +45,8 @@ void TrackedProduct::show()
 }
 void TrackedProduct::changeAmount(int amount)
 {
+	edited=true;
+	quantity=quantity+amount;
 	if (amount>0)
 		added=added+amount;
 	else
