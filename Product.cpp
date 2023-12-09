@@ -5,16 +5,18 @@
 
 Product::Product(std::string prodName)
 {
-	std::cout<<"TODO";
+	name=prodName;
+	quantity=0;
 	return;
 }
 void Product::changeAmount(int amount)
 {
-	std::cout<<"TODO";
+	quantity=quantity+amount;
 	return;
 }
 void Product::show()
 {
-	std::cout<<"TODO";
+	std::cout<<"Name of product "<<name<<"/n";
+	std::cout<<"Quantity of product "<<quantity<<"/n";
 	return;
 }
