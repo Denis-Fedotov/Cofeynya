@@ -4,7 +4,7 @@
 #ifndef __PRODUCT_H__
 #define __PRODUCT_H__
 class Product {
-	private:
+	protected:
 		std::string name;
 		int quantity;
 	public:

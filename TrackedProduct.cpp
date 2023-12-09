@@ -6,36 +6,48 @@
 
 TrackedProduct::TrackedProduct(std::string prodName) : Product(prodName)
 {
-	std::cout<<"TODO";
+	firstQuantity=0;
+	added=0;
+	consumed=0;
+	edited=false;
 	return;
 }
 void TrackedProduct::snap()
 {
-	std::cout<<"TODO";
+	firstQuantity=quantity;
 	return;
 }
 std::string TrackedProduct::getName()
 {
-	std::cout<<"TODO";
-	return 0;
+	return name;
 }
 bool TrackedProduct::isEdited()
 {
-	std::cout<<"TODO";
-	return false;
+	return edited;
 }
 void TrackedProduct::clearTracking()
 {
-	std::cout<<"TODO";
+	firstQuantity=0;
+	added=0;
+	consumed=0;
+	edited=false;
 	return;
 }
 void TrackedProduct::show()
 {
-	std::cout<<"TODO";
+	std::cout<<"Name: "<<name<<"/n"<<"Quantity: "<<quantity<<"/n"<<"First quantity of the day: "<< firstQuantity<<"/n";
+	std::cout<<"Added today: "<< added<<"/n"<<"Consumed today: "<< consumed<<"/n"<<"Edited: ";
+	if (edited)
+		std::cout<< "y";
+	else
+		std::cout<< "n";
 	return;
 }
 void TrackedProduct::changeAmount(int amount)
 {
-	std::cout<<"TODO";
+	if (amount>0)
+		added=added+amount;
+	else
+		consumed=consumed+abs(amount);
 	return;
 }
