@@ -24,19 +24,23 @@ void Report::AttachInvoice(User* fillingUser,  TrackedProdList* pList)
 }
 void Report::SeeInvoiceList()
 {
+	int num=0;
+	Invoice* temp;
 	std::cout<<"Invoices: "<<"/n";
 	for (int i=0; i<ListOfInvoice.size(); i++){
 		std::cout<<i+1<<")";
 		std::cout<<ListOfInvoice[i]<<"/n";
 	}
+	std:: cout<< "Please select invoice or exit(0=exit) ";
+	std:: cin >>num;
+	if (num!=0 && num<=ListOfInvoice.size()){
+		temp=ListOfInvoice[num-1];
+		temp->ShowWareList();
+	}
 	return;
 }
 void Report::show()
 {
-	std::cout<<"Company: " << NameOfCompany << "Date: "<< date<<"Invoices: ";
-	for (int i=0; i<ListOfInvoice.size(); i++){
-		std::cout<<i+1<<")";
-		std::cout<<ListOfInvoice[i]<<"/t";
-	}
+	std::cout<<"Company: " << NameOfCompany << "Date: "<< date<<"/n";
 	return;
 }
