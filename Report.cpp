@@ -13,13 +13,12 @@ void Report::FillReport()
 	std::cin>>NameOfCompany; std::cout<<"/n";
 	std::cout<<"Please enter today's date: ";
 	std::cin>>date; std::cout<<"/n";
-	
 	return;
 }
 void Report::AttachInvoice(User* fillingUser,  TrackedProdList* pList)
 {
-	
 	Invoice* temp;
+	temp->FillInvoice(fillingUser, pList);
 	ListOfInvoice.push_back(temp);
 	return;
 }
