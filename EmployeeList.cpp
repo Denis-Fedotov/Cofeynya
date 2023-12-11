@@ -71,9 +71,9 @@ User* EmployeeList::login()
 	std::string username;
 	std::string passwd;
 
-	std::cout<<std::endl<<"Enter username:";
+	std::cout << std::endl<<"Enter username:";
 	std::cin >> username;
-	std::cout<<std::endl<<"Enter passcode:";
+	std::cout << std::endl<<"Enter passcode:";
 	std::cin >> passwd;
 
 	for(int i=0; i < userList.size(); i++)
@@ -81,7 +81,7 @@ User* EmployeeList::login()
 		if(userList[i]->CheckID(passwd, username) return userList[i];
 	}
 
-	std::cout<<std::endl<<"Incorrect username or passcode.";
+	std::cout << std::endl << "Incorrect username or passcode.";
 
 	return 0;
 }
