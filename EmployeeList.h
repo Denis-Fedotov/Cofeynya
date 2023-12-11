@@ -4,10 +4,12 @@
 
 #ifndef __EMPLOYEELIST_H__
 #define __EMPLOYEELIST_H__
+
 class EmployeeList {
 	private:
 		std::vector<User*> userList;
 		std::vector<User*> onShift;
+//		bool isonShift;
 	public:
 		void addEmployee(TypeOfUser position);
 		void removeEmployee();
