@@ -12,7 +12,7 @@ class TrackedProdList {
 		void getChanged(std::vector<TrackedProduct*>* targList);
 		void addProduct();
 		void removeProduct();
-		TrackedProduct*`chooseProduct();
+		TrackedProduct* chooseProduct();
 		void showProducts();
 		void resetTracking();
 };

@@ -10,7 +10,6 @@ class ReportList {
 		std::vector<Report*> ListOfReports;
 	public:
 		void ShowReports();
-		Report* chooseReport();
 		void addReport(Report* targRep);
 };
 #endif
