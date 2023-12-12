@@ -4,11 +4,13 @@
 
 void User::FillEmpForm(TypeOfUser position)
 {
-	std::cout << std::endl << "Enter new name:";
+	std::cout << std::endl << "Enter new name: ";
 	std::cin >> name;
-	std::cout << std::endl << "Enter new surname:";
+	std::cout << std::endl << "Enter new surname: ";
 	std::cin >> surname;
-	std::cout << std::endl << "Enter new UserID:";
+	std::cout << std::endl << "Enter username: ";
+	std::cin >> username;
+	std::cout << std::endl << "Enter password: ";
 	std::cin >> UserID;
 	std::cout << std::endl << "Form filled.";
 	return;
