@@ -17,7 +17,7 @@ void Invoice::ShowWareList()
 {
 	for(int i=0; i<ListOfProduct.size(); i++)
 	{
-		std::cout << i << ". ";
+		std::cout << i+1 << ". ";
 		ListOfProduct[i]->show();
 	}
 	return;
@@ -26,23 +26,29 @@ void Invoice::FillInvoice(User* fillingUser, TrackedProdList* pList)
 {
 	NOG = fillingUser->GetName();
 	std::cout << std::endl << "Today's date: ";
-	std::cin >> date;
+	std::getline(std::cin, date);
+	std::cout << std::endl << "Number of products: ";
+	std::cin>>NumberOfProduct;
+	std::cin.ignore(1,'\n');
 	
+	std::cout << std::endl << "Name of the supplier: ";
+	std::getline(std::cin, NOD);
 	std::string input="y";
 	TrackedProduct* temp;
 	Product* temp1;
 	int inp; 
 	while(input=="y")
 	{
-		std::cout<<"Please choose the product: ";
 		temp = pList->chooseProduct();
 		temp1 = new Product(temp->getName());
 		std::cout<<std::endl<<"Please enter the amount recieved: ";
 		std::cin>>inp;
-		temp1-=>changeAmount(inp);
+		std::cin.ignore(1,'\n');
+		temp1->changeAmount(inp);
+		temp->changeAmount(inp);
 		ListOfProduct.push_back(temp1);
 		std::cout<<std::endl<<"Do you wish to add another product(y/n): ";
-		std::cin>>input;
+		std::getline(std::cin, input);
 	}
 	return;
 }

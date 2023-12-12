@@ -34,7 +34,7 @@ void TrackedProdList::removeProduct()
 {
 	int inp;
 	showProducts();
-	std::cout<<std::endl<<"Please choose the product: ";
+	std::cout<<std::endl<<"Please choose the product: "<<std::endl;
 	std::cin>>inp;
 	std::cin.ignore(1,'\n');
 	if(inp<=productList.size())
@@ -48,8 +48,9 @@ TrackedProduct* TrackedProdList::chooseProduct()
 {
 	int inp;
 	showProducts();
-	std::cout<<std::endl<<"Please choose the product: ";
+	std::cout<<std::endl<<"Please choose the product: "<<std::endl;
 	std::cin>>inp;
+	std::cin.ignore(1,'\n');
 	if(inp<=productList.size()) return productList[inp-1];
 	else return 0;
 }
