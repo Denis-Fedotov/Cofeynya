@@ -1,3 +1,4 @@
+//VERSION ALPHA
 #include <iostream>
 #include <string>
 
