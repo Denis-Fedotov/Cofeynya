@@ -4,6 +4,7 @@
 
 #ifndef __EMPLOYEELIST_H__
 #define __EMPLOYEELIST_H__
+
 class EmployeeList {
 	private:
 		std::vector<User*> userList;
@@ -16,6 +17,6 @@ class EmployeeList {
 		void addToShift(User* targUser);
 		void clearShift();
 		bool isOnShift(User* targUser);
-		void login();
+        User* login();
 };
 #endif

@@ -1,46 +1,87 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
 #include <vector>
 #include "User.h"
 #include "EmployeeList.h"
 
 void EmployeeList::addEmployee(TypeOfUser position)
 {
-	std::cout<<"TODO";
+	User* user;
+	user = new User;
+	userList.push_back(user);
+	user->FillEmpForm(position);
 	return;
 }
 void EmployeeList::removeEmployee()
 {
-	std::cout<<"TODO";
+	int remp;
+	showEmployees();
+	std::cout << std::endl << "Choose the employee: ";
+	std::cin >> remp;
+	
+	if(remp <= userList.size() && remp > 0)
+	{
+		delete userList[remp - 1];
+		userList.erase(userList.begin()+(remp - 1));
+	}
 	return;
 }
 User* EmployeeList::chooseEmployee()
 {
-	std::cout<<"TODO";
-	return 0;
+	int cemp;
+	showEmployees();
+	std::cout << std::endl << "Choose the employee: ";
+	std::cin >> cemp;
+	if(cemp < userList.size() && cemp > 0) return userList[cemp - 1];
+	else return 0;
 }
 void EmployeeList::showEmployees()
 {
-	std::cout<<"TODO";
+	for(int i=0; i < userList.size(); i++)
+	{
+		std::cout << i+1 << ". ";
+        std::cout<<"Name: "<<userList[i] -> GetName()<<" Surname: "<<userList[i] -> GetSurname();
+	}
 	return;
 }
 void EmployeeList::addToShift(User* targUser)
 {
-	std::cout<<"TODO";
+	onShift.push_back(targUser);
 	return;
 }
 void EmployeeList::clearShift()
 {
-	std::cout<<"TODO";
+	while (!onShift.empty()) {
+		onShift.pop_back();
+	}
+	std::cout << std::endl << "onShift List is empty";
 	return;
 }
 bool EmployeeList::isOnShift(User* targUser)
 {
-	std::cout<<"TODO";
+	for(int i=0; i < onShift.size(); i++)
+	{
+		if(onShift[i] == targUser) return true;
+	}
 	return false;
 }
-void EmployeeList::login()
+User* EmployeeList::login()
 {
-	std::cout<<"TODO";
-	return;
+	std::string username;
+	std::string passwd;
+
+	std::cout << std::endl<<"Enter username:";
+	std::cin >> username;
+	std::cout << std::endl<<"Enter passcode:";
+	std::cin >> passwd;
+
+	for(int i=0; i < userList.size(); i++)
+	{
+        if(userList[i]->CheckID(passwd, username)) return userList[i];
+	}
+
+	std::cout << std::endl << "Incorrect username or passcode.";
+
+	return 0;
 }

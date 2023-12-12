@@ -7227,6 +7227,12 @@
 <XPD:OBJ name="Operations[7]" type="UMLOperation" guid="jZ99tfTWN0CeFhLRcGA67QAA">
 <XPD:ATTR name="Name" type="string">Login</XPD:ATTR>
 <XPD:REF name="Owner">TpGoFozz0EWnhFGAmffsmgAA</XPD:REF>
+<XPD:ATTR name="#Parameters" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="Kk44QPc6E0qpmtFp3sYfjAAA">
+<XPD:ATTR name="DirectionKind" type="UMLParameterDirectionKind">pdkReturn</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">User*</XPD:ATTR>
+<XPD:REF name="BehavioralFeature">jZ99tfTWN0CeFhLRcGA67QAA</XPD:REF>
+</XPD:OBJ>
 </XPD:OBJ>
 <XPD:ATTR name="#Associations" type="integer">1</XPD:ATTR>
 <XPD:REF name="Associations[0]">/roRur7Sv0eDA1COsqh/pQAA</XPD:REF>
