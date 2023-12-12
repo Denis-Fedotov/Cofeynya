@@ -11,7 +11,7 @@ void ShiftHandoverLog::ShowAlcoholList()
 {
 	for(int i=0; i<listOfAlcohol.size(); i++)
 	{
-		std::cout<<i<<". ";
+		std::cout<<i+1<<". ";
 		listOfAlcohol[i]->show();
 	}
 	return;
@@ -20,7 +20,7 @@ void ShiftHandoverLog::FillLog(User* fillingUser, TrackedProdList* pList)
 {
 	NameOfBarman = fillingUser->GetName();
 	std::cout<<std::endl<<"Please enter today's date: ";
-	std::cin>>Date;
+	std::getline(std::cin, Date);
 	pList->getChanged(&ListOfProduct);
 	return;
 }

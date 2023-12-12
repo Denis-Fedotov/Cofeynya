@@ -26,7 +26,10 @@ int main()
 	TrackedProdList listOfProducts;
 	Report* currentReport;
 	ShiftHandoverLog* currentLog; 
-	User* activeUser; 
+	User* activeUser=0; 
+	
+	currentLog = new ShiftHandoverLog;
+	currentReport = new Report;
 	
 	//User input string.
 	int input=-1;
@@ -58,16 +61,16 @@ int main()
 		cout<<"15. See the archived reports."<<endl;
 		cout<<"16. See the archived handover logs."<<endl;
 		cout<<"17. Close the shift."<<endl;
-		if(activeUser!=0) cout<<"noUser"<<">";
+		if(activeUser==0) cout<<"noUser"<<">";
 		else cout<<activeUser->GetName()<<">";
 		
 		cin>>input;
-		
+		cin.ignore(1,'\n');
 		switch(input)
 		{
 			case 1:
 			{
-				listOfWorkers.login();
+				activeUser = listOfWorkers.login();
 				break;
 			}
 			case 2:
@@ -86,7 +89,7 @@ int main()
 					listOfWorkers.addToShift(listOfWorkers.chooseEmployee());
 					cout<<endl<<"If you wish to add another user? y/n"<<endl;
 					cout<<">";
-					cin>>locInput;
+					std::getline(cin, locInput);
 				}
 				break;
 			}
@@ -101,9 +104,9 @@ int main()
 			case 5:
 			{
 				if(activeUser==0) break;
-				if(!activeUser->CheckAccess(baker)) break;
 				
 				listOfProducts.showProducts();
+				system("pause");
 				break;
 			}
 			case 6:
@@ -115,7 +118,8 @@ int main()
 				int am;
 				cout<<endl<<"Please enter the amount sold: ";
 				cin>>am;
-				listOfProducts.chooseProduct()->changeAmount(am);
+				cin.ignore(1,'\n');
+				listOfProducts.chooseProduct()->changeAmount(am*(-1));
 				break;
 			}
 			case 7:
@@ -155,7 +159,7 @@ int main()
 				cout<<"3. Add baker"<<endl;
 				cout<<">";
 				cin>>type;
-				
+				cin.ignore(1,'\n');
 				switch(type)
 				{
 					case 1:
@@ -187,6 +191,7 @@ int main()
 				if(!activeUser->CheckAccess(manager)) break;
 				
 				listOfWorkers.showEmployees();
+				system("pause");
 				break;
 			}
 			case 13:
@@ -195,6 +200,7 @@ int main()
 				if(!activeUser->CheckAccess(manager)) break;
 				
 				currentReport->SeeInvoiceList();
+				system("pause");
 				break;
 			}
 			case 14:
@@ -203,6 +209,7 @@ int main()
 				if(!activeUser->CheckAccess(manager)) break;
 				
 				currentLog->ShowAlcoholList();
+				system("pause");
 				break;
 			}
 			case 15:
@@ -211,6 +218,7 @@ int main()
 				if(!activeUser->CheckAccess(manager)) break;
 				
 				reportArchive.ShowReports();
+				system("pause");
 				break;
 			}
 			case 16:
@@ -219,6 +227,7 @@ int main()
 				if(!activeUser->CheckAccess(manager)) break;
 				
 				logArchive.showLogs();
+				system("pause");
 				break;
 			}
 			case 17:
@@ -229,16 +238,18 @@ int main()
 				std::string locInput="owo";
 				cout<<endl<<"Do you need to fill the report? y/n"<<endl;
 				cout<<">";
-				cin>>locInput;
+				std::getline(cin, locInput);
 				
 				if(locInput=="y")
 				{
 					currentReport->FillReport();
 					reportArchive.addReport(currentReport);
+					currentReport = new Report;
 				}			
 				
 				currentLog->FillLog(activeUser, &listOfProducts);
 				logArchive.addLog(currentLog);
+				currentLog = new ShiftHandoverLog;
 				listOfWorkers.clearShift();
 				break;
 			}

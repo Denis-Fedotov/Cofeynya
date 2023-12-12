@@ -25,7 +25,7 @@ void TrackedProdList::addProduct()
 	std::string name;
 	TrackedProduct* temp;
 	std::cout<<std::endl<<"Please enter the name of the product: ";
-	std::cin>>name;
+	std::getline(std::cin, name);
 	temp = new TrackedProduct(name);
 	productList.push_back(temp);
 	return;
@@ -36,8 +36,8 @@ void TrackedProdList::removeProduct()
 	showProducts();
 	std::cout<<std::endl<<"Please choose the product: ";
 	std::cin>>inp;
-	
-	if(inp<productList.size())
+	std::cin.ignore(1,'\n');
+	if(inp<=productList.size())
 	{
 		delete productList[inp-1];
 		productList.erase(productList.begin()+(inp-1));
@@ -50,7 +50,7 @@ TrackedProduct* TrackedProdList::chooseProduct()
 	showProducts();
 	std::cout<<std::endl<<"Please choose the product: ";
 	std::cin>>inp;
-	if(inp<productList.size()) return productList[inp-1];
+	if(inp<=productList.size()) return productList[inp-1];
 	else return 0;
 }
 void TrackedProdList::showProducts()
@@ -59,6 +59,7 @@ void TrackedProdList::showProducts()
 	{
 		std::cout<<i+1<<". ";
 		productList[i]->show();
+		std::cout<<std::endl;
 	}
 	return;
 }

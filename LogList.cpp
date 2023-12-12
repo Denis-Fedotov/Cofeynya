@@ -11,12 +11,13 @@ void LogList::showLogs()
 	
 	for(int i=0; i<listOfLogs.size(); i++)
 	{
-		std::cout<<i<<". ";
+		std::cout<<std::endl<<i+1<<". ";
 		listOfLogs[i]->Show();
 	}
 	std::cout<<std::endl<<"Please choose the log to see details: ";
 	std::cin>>inp;
-	if(inp<listOfLogs.size())
+	std::cin.ignore(1,'\n');
+	if(inp<=listOfLogs.size())
 	{
 		std::cout<<std::endl<<"List of opened alcohol: "<<std::endl;
 		listOfLogs[inp-1]->ShowAlcoholList();
@@ -30,6 +31,5 @@ void LogList::showLogs()
 void LogList::addLog(ShiftHandoverLog* targLog)
 {
 	listOfLogs.push_back(targLog);
-	targLog = new ShiftHandoverLog;
 	return;
 }

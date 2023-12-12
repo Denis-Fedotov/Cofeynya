@@ -19,7 +19,7 @@ void EmployeeList::removeEmployee()
 	showEmployees();
 	std::cout << std::endl << "Choose the employee: ";
 	std::cin >> remp;
-	
+	std::cin.ignore(1,'\n');
 	if(remp <= userList.size() && remp > 0)
 	{
 		delete userList[remp - 1];
@@ -33,7 +33,8 @@ User* EmployeeList::chooseEmployee()
 	showEmployees();
 	std::cout << std::endl << "Choose the employee: ";
 	std::cin >> cemp;
-	if(cemp < userList.size() && cemp > 0) return userList[cemp - 1];
+	std::cin.ignore(1,'\n');
+	if(cemp <= userList.size() && cemp > 0) return userList[cemp - 1];
 	else return 0;
 }
 void EmployeeList::showEmployees()
@@ -42,6 +43,10 @@ void EmployeeList::showEmployees()
 	{
 		std::cout << i+1 << ". ";
         std::cout<<"Name: "<<userList[i] -> GetName()<<" Surname: "<<userList[i] -> GetSurname();
+		if(userList[i]->CheckAccess(manager)) std::cout<<" Position: manager";
+		else if(userList[i]->CheckAccess(barman)) std::cout<<" Position: barman";
+		else std::cout<<" Position: baker";
+		std::cout<<std::endl;
 	}
 	return;
 }
@@ -71,14 +76,14 @@ User* EmployeeList::login()
 	std::string username;
 	std::string passwd;
 
-	std::cout << std::endl<<"Enter username:";
-	std::cin >> username;
-	std::cout << std::endl<<"Enter passcode:";
-	std::cin >> passwd;
+	std::cout << std::endl<<"Enter username: ";
+	std::getline(std::cin, username);
+	std::cout << std::endl<<"Enter passcode: ";
+	std::getline(std::cin, passwd);
 
 	for(int i=0; i < userList.size(); i++)
 	{
-        if(userList[i]->CheckID(passwd, username)) return userList[i];
+        if(userList[i]->CheckID(passwd, username) && (isOnShift(userList[i]) || userList[i]->CheckAccess(manager))) return userList[i];
 	}
 
 	std::cout << std::endl << "Incorrect username or passcode.";

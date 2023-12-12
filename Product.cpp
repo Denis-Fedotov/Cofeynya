@@ -16,7 +16,7 @@ void Product::changeAmount(int amount)
 }
 void Product::show()
 {
-	std::cout<<"Name of product "<<name<<"/n";
-	std::cout<<"Quantity of product "<<quantity<<"/n";
+	std::cout<<"Name of product "<<name<<"\n";
+	std::cout<<"Quantity of product "<<quantity<<"\n";
 	return;
 }
