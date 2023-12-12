@@ -41,7 +41,7 @@ void EmployeeList::showEmployees()
 	for(int i=0; i < userList.size(); i++)
 	{
 		std::cout << i+1 << ". ";
-		userList[i] -> show();
+        std::cout<<"Name: "<<userList[i] -> GetName()<<" Surname: "<<userList[i] -> GetSurname();
 	}
 	return;
 }
@@ -78,7 +78,7 @@ User* EmployeeList::login()
 
 	for(int i=0; i < userList.size(); i++)
 	{
-		if(userList[i]->CheckID(passwd, username) return userList[i];
+        if(userList[i]->CheckID(passwd, username)) return userList[i];
 	}
 
 	std::cout << std::endl << "Incorrect username or passcode.";

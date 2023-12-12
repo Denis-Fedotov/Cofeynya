@@ -9,7 +9,6 @@ class EmployeeList {
 	private:
 		std::vector<User*> userList;
 		std::vector<User*> onShift;
-//		bool isonShift;
 	public:
 		void addEmployee(TypeOfUser position);
 		void removeEmployee();
@@ -18,6 +17,6 @@ class EmployeeList {
 		void addToShift(User* targUser);
 		void clearShift();
 		bool isOnShift(User* targUser);
-		void login();
+        User* login();
 };
 #endif

@@ -50,6 +50,6 @@ void TrackedProduct::changeAmount(int amount)
 	if (amount>0)
 		added=added+amount;
 	else
-		consumed=consumed+abs(amount);
+        consumed=consumed+(amount*(-1));
 	return;
 }
