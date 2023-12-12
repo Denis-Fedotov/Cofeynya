@@ -4,26 +4,42 @@
 
 void User::FillEmpForm(TypeOfUser position)
 {
-	std::cout<<"TODO";
+	std::cout << std::endl << "Enter new name: ";
+	std::cin >> name;
+	std::cout << std::endl << "Enter new surname: ";
+	std::cin >> surname;
+	std::cout << std::endl << "Enter username: ";
+	std::cin >> username;
+	std::cout << std::endl << "Enter password: ";
+	std::cin >> UserID;
+	std::cout << std::endl << "Form filled.";
 	return;
 }
 std::string User::GetName()
 {
-	std::cout<<"TODO";
-	return "";
+	return name;
 }
 std::string User::GetSurname()
 {
-	std::cout<<"TODO";
-	return "";
+	return surname;
 }
-bool User::CheckID(std::string code, std::string username)
+bool User::CheckID(std::string code, std::string usrname)
 {
-	std::cout<<"TODO";
-	return false;
+	if(code == UserID && username == usrname) 
+		return true;
+	else
+		return false;
 }
 bool User::CheckAccess(TypeOfUser position)
 {
-	std::cout<<"TODO";
-	return false;
+	if(type == manager && position == manager) 
+		return true;
+	else if(type == barman && position == barman) 
+		return true;
+	else if(type == barman && position == baker) 
+		return true;
+	else if(type == baker && position == baker) 
+		return true;
+	else 
+		return false;
 }
