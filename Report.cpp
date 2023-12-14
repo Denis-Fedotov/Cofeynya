@@ -30,7 +30,7 @@ void Report::SeeInvoiceList()
 	Invoice* temp;
 	std::cout<<"Invoices: "<<"\n";
 	for (int i=0; i<ListOfInvoice.size(); i++){
-		std::cout<<i+1<<". "<<std::endl;
+        std::cout<<std::endl<<i+1<<". "<<std::endl;
 		ListOfInvoice[i]->show();
 	}
 	std:: cout<<std::endl<< "Please select invoice or exit(0=exit) ";
