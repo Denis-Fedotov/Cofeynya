@@ -6,7 +6,11 @@
 using namespace std;
 void ReportList::ShowReports()
 {
-
+    for (int i = 0; i < ListOfReports.size(); i++){
+        cout<<i+1 <<" Report"<<endl;
+        cout<<ListOfReports[i]<<endl;
+    }
+        return;
 }
 void ReportList::addReport(Report* targRep)
 {
