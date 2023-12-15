@@ -14,6 +14,7 @@ class User {
 		void FillEmpForm(TypeOfUser position);
 		std::string GetName();
 		std::string GetSurname();
+		std::string GetUsername();
 		bool CheckID(std::string code, std::string username);
 		bool CheckAccess(TypeOfUser position);
 };

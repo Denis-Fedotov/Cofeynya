@@ -1,4 +1,4 @@
-//VERSION ALPHA
+//VERSION SIGMA
 #include <iostream>
 #include <string>
 
@@ -252,6 +252,7 @@ int main()
 				logArchive.addLog(currentLog);
 				currentLog = new ShiftHandoverLog;
 				listOfWorkers.clearShift();
+				listOfProducts.resetTracking();	
 				break;
 			}
 		}

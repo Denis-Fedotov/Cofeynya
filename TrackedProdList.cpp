@@ -69,6 +69,7 @@ void TrackedProdList::resetTracking()
 	for(int i=0; i<productList.size(); i++)
 	{
 		productList[i]->clearTracking();
+		productList[i]->snap();
 	}
 	return;
 }

@@ -7,10 +7,29 @@
 
 void EmployeeList::addEmployee(TypeOfUser position)
 {
+	bool success=false;
 	User* user;
 	user = new User;
-	userList.push_back(user);
 	user->FillEmpForm(position);
+	while(!success)
+	{
+		success=true;
+		for(int i=0; i < userList.size(); i++)
+		{
+			if(userList[i]->GetUsername() == user->GetUsername())
+			{
+				std::cout<<std::endl<<"That username already exists.";
+				success=false;
+				break;
+			}
+		}
+		if(success==false)
+		{
+			user->FillEmpForm(position);
+		}
+	}
+	
+	userList.push_back(user);
 	return;
 }
 void EmployeeList::removeEmployee()
