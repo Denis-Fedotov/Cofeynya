@@ -252,6 +252,7 @@ int main()
 				logArchive.addLog(currentLog);
 				currentLog = new ShiftHandoverLog;
 				listOfWorkers.clearShift();
+				listOfProducts.resetTracking();	
 				break;
 			}
 		}

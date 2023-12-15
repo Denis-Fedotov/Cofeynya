@@ -40,8 +40,9 @@ void ShiftHandoverLog::showProductList()
 {
 	for(int i=0; i<ListOfProduct.size(); i++)
 	{
-		std::cout<<i<<". ";
+		std::cout<<i+1<<". "<<std::endl;
 		ListOfProduct[i]->show();
+		std::cout<<std::endl;
 	}
 	return;
 }
