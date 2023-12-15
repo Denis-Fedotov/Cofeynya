@@ -1,4 +1,4 @@
-//VERSION ALPHA
+//VERSION SIGMA
 #include <iostream>
 #include <string>
 
