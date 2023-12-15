@@ -44,6 +44,6 @@ void Report::SeeInvoiceList()
 }
 void Report::show()
 {
-	std::cout<<"Company: " << NameOfCompany << "Date: "<< date<<"\n";
+	std::cout<<"Company: " << NameOfCompany << " Date: "<< date<<"\n";
 	return;
 }

@@ -24,6 +24,10 @@ std::string User::GetSurname()
 {
 	return surname;
 }
+std::string User::GetUsername()
+{
+	return username;
+}
 bool User::CheckID(std::string code, std::string usrname)
 {
 	if(code == UserID && username == usrname) 
